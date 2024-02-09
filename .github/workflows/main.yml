@@ -39,9 +39,22 @@ jobs:
           
       - name: Build debug APK
         run: bash ./gradlew assembleDebug --stacktrace
+
+      - name: Get git hash
+        shell: bash
+        run: |
+            echo ${{ github.sha }}
+            echo "GITHUB_SHA=${{ github.sha }}" >> $GITHUB_ENV
+            echo "GITHUB_SHA_7=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+
+      - name: Rename generated APK
+        shell: bash
+        run: |
+            cd ./app/build/outputs/apk/debug/
+            mv *.apk FinancialChecker-${{ env.GITHUB_SHA_7 }}.apk
         
       - name: Create APK artifact
         uses: actions/upload-artifact@v1
         with:
-          name: app
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: FinancialChecker-${{ env.GITHUB_SHA_7 }}
+          path: ./app/build/outputs/apk/debug/FinancialChecker-${{ env.GITHUB_SHA_7 }}.apk
