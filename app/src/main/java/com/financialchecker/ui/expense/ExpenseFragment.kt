@@ -1,5 +1,6 @@
 package com.financialchecker.ui.expense
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.financialchecker.databinding.FragmentExpenseBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ExpenseFragment : Fragment() {
 
@@ -27,6 +29,13 @@ class ExpenseFragment : Fragment() {
 
         _binding = FragmentExpenseBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val addExpenseButton: FloatingActionButton = binding.floatingActionButton
+
+        addExpenseButton.setOnClickListener {
+            val intent = Intent(context, RegisterExpenseActivity::class.java)
+            startActivity(intent)
+        }
 
 //        val textView: TextView = binding.textHome
 //        expenseViewModel.text.observe(viewLifecycleOwner) {
