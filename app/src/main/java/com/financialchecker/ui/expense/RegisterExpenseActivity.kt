@@ -1,9 +1,11 @@
 package com.financialchecker.ui.expense
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
+import com.financialchecker.MainActivity
 import com.financialchecker.R
 import com.financialchecker.databinding.ActivityRegisterExpenseBinding
 
@@ -19,9 +21,19 @@ class RegisterExpenseActivity : AppCompatActivity() {
 
         title = "Create expense"
 
-        val items = resources.getStringArray(R.array.expense_status)
-        val adapter = ArrayAdapter(applicationContext, R.layout.item_expense_status, items)
+        val statusItems = resources.getStringArray(R.array.expense_status)
+        val essentialItems = resources.getStringArray(R.array.expense_type)
 
-        (binding.atvExpenseStatus as? AutoCompleteTextView)?.setAdapter(adapter)
+        val statusItemsAdapter = ArrayAdapter(applicationContext, R.layout.item_expense_status, statusItems)
+        val essentialItemsAdapter = ArrayAdapter(applicationContext, R.layout.item_expense_status, essentialItems)
+
+        (binding.atvExpenseStatus as? AutoCompleteTextView)?.setAdapter(statusItemsAdapter)
+        (binding.atvExpenseEssential as? AutoCompleteTextView)?.setAdapter(essentialItemsAdapter)
+
+        binding.btnAddExpense.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+            onBackPressed()
+        }
     }
 }
