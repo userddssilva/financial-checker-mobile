@@ -31,9 +31,6 @@ class RegisterExpenseActivity : AppCompatActivity() {
         (binding.atvExpenseEssential as? AutoCompleteTextView)?.setAdapter(essentialItemsAdapter)
 
         binding.btnAddExpense.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-            onBackPressed()
             onBackPressedDispatcher.onBackPressed()
         }
     }
