@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.financialchecker.R
 import com.financialchecker.databinding.FragmentExpenseBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -24,6 +25,7 @@ class ExpenseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        activity?.title = getString(R.string.expense);
         val expenseViewModel =
             ViewModelProvider(this).get(ExpenseViewModel::class.java)
 

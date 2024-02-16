@@ -4,12 +4,17 @@
     <string name="title_expense">Expense</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string-array name="expense_status">
-        <item>Paid</item>
-        <item>Unpaid</item>
-    </string-array>
-    <string-array name="expense_type">
-        <item>Essential</item>
-        <item>Not Essential</item>
+    <string name="expense">Expense</string>
+    <string name="category">Category</string>
+    <string-array name="expense_category">
+        <item>Clothing</item>
+        <item>Education</item>
+        <item>Health</item>
+        <item>Home</item>
+        <item>Restaurant</item>
+        <item>Supermarket</item>
+        <item>Transport</item>
+        <item>Services</item>
+        <item>Others</item>
     </string-array>
 </resources>

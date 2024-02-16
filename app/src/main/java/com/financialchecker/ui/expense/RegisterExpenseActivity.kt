@@ -21,14 +21,11 @@ class RegisterExpenseActivity : AppCompatActivity() {
 
         title = "Create expense"
 
-        val statusItems = resources.getStringArray(R.array.expense_status)
-        val essentialItems = resources.getStringArray(R.array.expense_type)
+        val expenseCategoryArray = resources.getStringArray(R.array.expense_category)
 
-        val statusItemsAdapter = ArrayAdapter(applicationContext, R.layout.item_expense_status, statusItems)
-        val essentialItemsAdapter = ArrayAdapter(applicationContext, R.layout.item_expense_status, essentialItems)
+        val expenseCategoryItems = ArrayAdapter(applicationContext, R.layout.item_expense_status, expenseCategoryArray)
 
-        (binding.atvExpenseStatus as? AutoCompleteTextView)?.setAdapter(statusItemsAdapter)
-        (binding.atvExpenseEssential as? AutoCompleteTextView)?.setAdapter(essentialItemsAdapter)
+        (binding.atvExpenseCategory as? AutoCompleteTextView)?.setAdapter(expenseCategoryItems)
 
         binding.btnAddExpense.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
