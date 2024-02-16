@@ -8,8 +8,14 @@
     <fragment
         android:id="@+id/navigation_expense"
         android:name="com.financialchecker.ui.expense.ExpenseFragment"
-        android:label="@string/title_home"
+        android:label="@string/expense"
         tools:layout="@layout/fragment_expense" />
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.financialchecker.ui.category.CategoryFragment"
+        android:label="@string/category"
+        tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
