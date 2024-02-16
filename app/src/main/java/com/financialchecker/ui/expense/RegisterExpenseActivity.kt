@@ -34,6 +34,7 @@ class RegisterExpenseActivity : AppCompatActivity() {
 //            val intent = Intent(this, MainActivity::class.java)
 //            startActivity(intent)
             onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 }
