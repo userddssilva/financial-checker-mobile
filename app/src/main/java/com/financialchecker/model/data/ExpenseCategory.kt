@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.category
+package com.financialchecker.model.data
 
 data class ExpenseCategory(
-        val name: String,
-        val isEssential: Boolean
+    val name: String,
+    val isEssential: Boolean
 )

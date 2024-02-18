@@ -31,6 +31,7 @@
     tools:context=".ui.expense.ExpenseFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_expenses"
         android:layout_width="411dp"
         android:layout_height="731dp"
         app:layout_constraintBottom_toBottomOf="parent"

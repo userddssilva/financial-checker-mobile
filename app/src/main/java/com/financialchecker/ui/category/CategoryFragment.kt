@@ -21,6 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 package com.financialchecker.ui.category
 
 import android.os.Bundle
@@ -31,6 +32,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.financialchecker.R
 import com.financialchecker.databinding.FragmentCategoryBinding
+import com.financialchecker.model.adapter.ExpenseCategoryAdapter
+import com.financialchecker.model.data.ExpenseCategory
 
 class CategoryFragment : Fragment() {
     private var _binding: FragmentCategoryBinding? = null

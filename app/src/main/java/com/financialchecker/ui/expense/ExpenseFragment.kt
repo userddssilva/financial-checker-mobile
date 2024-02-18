@@ -29,11 +29,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.financialchecker.R
 import com.financialchecker.databinding.FragmentExpenseBinding
+import com.financialchecker.model.adapter.ExpenseAdapter
+import com.financialchecker.model.data.Expense
+import com.financialchecker.model.data.ExpenseCategory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ExpenseFragment : Fragment() {
@@ -62,6 +65,24 @@ class ExpenseFragment : Fragment() {
             val intent = Intent(context, RegisterExpenseActivity::class.java)
             startActivity(intent)
         }
+
+        val expense = Expense(
+            "Dinner for Two",
+            "23/02/2023",
+            34.4,
+            ExpenseCategory("Restaurante", true),
+            false
+        )
+
+        val expenses = arrayListOf<Expense>()
+
+        for (i in 1..10) {
+            expenses.add(expense)
+        }
+
+        val expensesRecycleView = binding.rcExpenses
+        expensesRecycleView.layoutManager = LinearLayoutManager(context)
+        expensesRecycleView.adapter = ExpenseAdapter(expenses)
 
 //        val textView: TextView = binding.textHome
 //        expenseViewModel.text.observe(viewLifecycleOwner) {
