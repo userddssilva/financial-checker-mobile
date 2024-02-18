@@ -22,45 +22,33 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.notifications
+package com.financialchecker.model.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.financialchecker.databinding.FragmentNotificationsBinding
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.financialchecker.R
+import com.financialchecker.model.data.Expense
+import com.financialchecker.ui.expense.ExpenseViewHolder
 
-class NotificationsFragment : Fragment() {
-
-    private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+class ExpenseAdapter(private val expenses: List<Expense>) : Adapter<ExpenseViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseViewHolder {
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+        val expenseView = inflater.inflate(R.layout.item_expense, parent, false)
+        return ExpenseViewHolder(expenseView)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun getItemCount(): Int {
+        return expenses.size
+    }
+
+    override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
+        holder.description.text = expenses[position].description
+        holder.category.text = expenses[position].description
+        holder.date.text = expenses[position].date
+        holder.value.text = expenses[position].value.toString()
+        holder.category.text = expenses[position].category.name
+        holder.isPaid.text = expenses[position].isPaid.toString()
     }
 }

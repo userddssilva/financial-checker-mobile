@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_expense">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.financialchecker.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_expense"
+        android:name="com.financialchecker.ui.expense.ExpenseFragment"
+        android:label="@string/expense"
+        tools:layout="@layout/fragment_expense" />
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.financialchecker.ui.category.CategoryFragment"
+        android:label="@string/category"
+        tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

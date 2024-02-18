@@ -22,16 +22,12 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.notifications
+package com.financialchecker.model.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-
-class NotificationsViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
-}
+data class Expense(
+    val description: String,
+    val date: String,
+    val value: Double,
+    val category: ExpenseCategory,
+    val isPaid: Boolean
+)

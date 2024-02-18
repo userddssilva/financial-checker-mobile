@@ -22,45 +22,29 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.notifications
+package com.financialchecker.model.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.financialchecker.databinding.FragmentNotificationsBinding
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.financialchecker.R
+import com.financialchecker.model.data.ExpenseCategory
+import com.financialchecker.ui.category.ExpenseCategoryViewHolder
 
-class NotificationsFragment : Fragment() {
-
-    private var _binding: FragmentNotificationsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+class ExpenseCategoryAdapter(private val expenseCategoryItems: List<ExpenseCategory>) :
+    Adapter<ExpenseCategoryViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseCategoryViewHolder {
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+        val expenseCategoryView = inflater.inflate(R.layout.item_expense_category, parent, false)
+        return ExpenseCategoryViewHolder(expenseCategoryView)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun getItemCount(): Int {
+        return expenseCategoryItems.size
+    }
+
+    override fun onBindViewHolder(holder: ExpenseCategoryViewHolder, position: Int) {
+        holder.category.text = expenseCategoryItems[position].name
     }
 }

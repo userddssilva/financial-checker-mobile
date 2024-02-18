@@ -22,41 +22,35 @@
  * SOFTWARE.
  */
 
-package com.financialchecker
+package com.financialchecker.ui.expense
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.financialchecker.databinding.ActivityMainBinding
+import com.financialchecker.R
+import com.financialchecker.databinding.ActivityRegisterExpenseBinding
 
-class MainActivity : AppCompatActivity() {
+class RegisterExpenseActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityRegisterExpenseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityRegisterExpenseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        title = "Create expense"
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_expense,
-                R.id.navigation_category,
-                R.id.navigation_dashboard,
-                R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        val expenseCategoryArray = resources.getStringArray(R.array.expense_category)
+
+        val expenseCategoryItems = ArrayAdapter(applicationContext, R.layout.item_tv_auto_complete, expenseCategoryArray)
+
+        (binding.atvExpenseCategory as? AutoCompleteTextView)?.setAdapter(expenseCategoryItems)
+
+        binding.btnAddExpense.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }
