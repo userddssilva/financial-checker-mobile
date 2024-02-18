@@ -27,6 +27,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_marginStart="32dp"
     android:layout_marginBottom="32dp">
 
@@ -35,6 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_marginBottom="12dp"
         tools:text="Restaurant"/>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#AFACAC"/>
 
 </LinearLayout>
