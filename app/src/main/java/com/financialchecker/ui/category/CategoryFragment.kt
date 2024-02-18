@@ -24,6 +24,7 @@
 
 package com.financialchecker.ui.category
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -58,6 +59,11 @@ class CategoryFragment : Fragment() {
 
         expenseCategoryRecycleView.layoutManager = LinearLayoutManager(context)
         expenseCategoryRecycleView.adapter = categoriesAdapter
+
+        binding.btnAddCategory.setOnClickListener {
+            val intent = Intent(context, CreateCategoryActivity::class.java)
+            startActivity(intent)
+        }
 
         return root
     }
