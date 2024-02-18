@@ -24,6 +24,7 @@
 
 package com.financialchecker.model.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -43,12 +44,13 @@ class ExpenseAdapter(private val expenses: List<Expense>) : Adapter<ExpenseViewH
         return expenses.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
         holder.description.text = expenses[position].description
         holder.category.text = expenses[position].description
         holder.date.text = expenses[position].date
-        holder.value.text = expenses[position].value.toString()
+        holder.value.text = "R$ ${expenses[position].value}".replace(".", ",")
         holder.category.text = expenses[position].category.name
-        holder.isPaid.text = expenses[position].isPaid.toString()
+    holder.isPaid.text = if (expenses[position].isPaid) "Paid" else "Unpaid"
     }
 }
