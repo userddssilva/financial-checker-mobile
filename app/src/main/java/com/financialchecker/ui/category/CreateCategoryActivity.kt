@@ -29,7 +29,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.financialchecker.R
 import com.financialchecker.databinding.ActivityCreateCategoryBinding
-import com.financialchecker.databinding.ActivityRegisterExpenseBinding
 
 class CreateCategoryActivity : AppCompatActivity() {
 

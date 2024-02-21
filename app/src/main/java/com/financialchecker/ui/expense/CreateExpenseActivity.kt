@@ -29,23 +29,24 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import com.financialchecker.R
-import com.financialchecker.databinding.ActivityRegisterExpenseBinding
+import com.financialchecker.databinding.ActivityCreateExpenseBinding
 
-class RegisterExpenseActivity : AppCompatActivity() {
+class CreateExpenseActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterExpenseBinding
+    private lateinit var binding: ActivityCreateExpenseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityRegisterExpenseBinding.inflate(layoutInflater)
+        binding = ActivityCreateExpenseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         title = "Create expense"
 
         val expenseCategoryArray = resources.getStringArray(R.array.expense_category)
 
-        val expenseCategoryItems = ArrayAdapter(applicationContext, R.layout.item_tv_auto_complete, expenseCategoryArray)
+        val expenseCategoryItems =
+            ArrayAdapter(applicationContext, R.layout.item_tv_auto_complete, expenseCategoryArray)
 
         (binding.atvExpenseCategory as? AutoCompleteTextView)?.setAdapter(expenseCategoryItems)
 

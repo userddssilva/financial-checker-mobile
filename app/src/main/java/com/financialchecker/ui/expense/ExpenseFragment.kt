@@ -52,7 +52,7 @@ class ExpenseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        activity?.title = getString(R.string.expense);
+        activity?.title = getString(R.string.expense)
         val expenseViewModel =
             ViewModelProvider(this).get(ExpenseViewModel::class.java)
 
@@ -62,7 +62,7 @@ class ExpenseFragment : Fragment() {
         val addExpenseButton: FloatingActionButton = binding.floatingActionButton
 
         addExpenseButton.setOnClickListener {
-            val intent = Intent(context, RegisterExpenseActivity::class.java)
+            val intent = Intent(context, CreateExpenseActivity::class.java)
             startActivity(intent)
         }
 
