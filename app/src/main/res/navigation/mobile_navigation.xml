@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_expense"
-        android:name="com.financialchecker.ui.expense.ExpenseFragment"
+        android:name="com.financialchecker.presenter.ui.expense.ExpenseFragment"
         android:label="@string/expense"
         tools:layout="@layout/fragment_expense" />
 
     <fragment
         android:id="@+id/navigation_category"
-        android:name="com.financialchecker.ui.category.CategoryFragment"
+        android:name="com.financialchecker.presenter.ui.category.CategoryFragment"
         android:label="@string/category"
         tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.financialchecker.ui.dashboard.DashboardFragment"
+        android:name="com.financialchecker.presenter.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.financialchecker.ui.notifications.NotificationsFragment"
+        android:name="com.financialchecker.presenter.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

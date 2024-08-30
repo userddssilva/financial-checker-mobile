@@ -22,13 +22,16 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.category
+package com.financialchecker.presenter.ui.notifications
 
-import android.view.View
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.financialchecker.R
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class ExpenseCategoryViewHolder(expenseViewItem: View) : ViewHolder(expenseViewItem) {
-    var category: TextView = expenseViewItem.findViewById(R.id.tv_expense_category)
+class NotificationsViewModel : ViewModel() {
+
+    private val _text = MutableLiveData<String>().apply {
+        value = "This is notifications Fragment"
+    }
+    val text: LiveData<String> = _text
 }

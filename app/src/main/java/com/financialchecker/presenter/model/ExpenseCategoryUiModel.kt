@@ -22,36 +22,9 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.expense
+package com.financialchecker.presenter.model
 
-import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.appcompat.app.AppCompatActivity
-import com.financialchecker.R
-import com.financialchecker.databinding.ActivityCreateExpenseBinding
-
-class CreateExpenseActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityCreateExpenseBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityCreateExpenseBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        title = "Create expense"
-
-        val expenseCategoryArray = resources.getStringArray(R.array.expense_category)
-
-        val expenseCategoryItems =
-            ArrayAdapter(applicationContext, R.layout.item_tv_auto_complete, expenseCategoryArray)
-
-        (binding.atvExpenseCategory as? AutoCompleteTextView)?.setAdapter(expenseCategoryItems)
-
-        binding.btnAddExpense.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
-    }
-}
+data class ExpenseCategoryUiModel(
+    val name: String,
+    val isEssential: Boolean
+)

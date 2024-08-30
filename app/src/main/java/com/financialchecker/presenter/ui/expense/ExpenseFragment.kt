@@ -22,20 +22,26 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.dashboard
+package com.financialchecker.presenter.ui.expense
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.financialchecker.databinding.FragmentDashboardBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.financialchecker.R
+import com.financialchecker.databinding.FragmentExpenseBinding
+import com.financialchecker.presenter.adapter.ExpenseAdapter
+import com.financialchecker.presenter.model.ExpenseUiModel
+import com.financialchecker.presenter.model.ExpenseCategoryUiModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class DashboardFragment : Fragment() {
+class ExpenseFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentExpenseBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,16 +52,42 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        activity?.title = getString(R.string.expense)
+        val expenseViewModel =
+            ViewModelProvider(this).get(ExpenseViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentExpenseBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val addExpenseButton: FloatingActionButton = binding.floatingActionButton
+
+        addExpenseButton.setOnClickListener {
+            val intent = Intent(context, CreateExpenseActivity::class.java)
+            startActivity(intent)
         }
+
+        val expenseUiModel = ExpenseUiModel(
+            "Dinner for Two",
+            "23/02/2023",
+            34.4,
+            ExpenseCategoryUiModel("Restaurante", true),
+            false
+        )
+
+        val expens = arrayListOf<ExpenseUiModel>()
+
+        for (i in 1..10) {
+            expens.add(expenseUiModel)
+        }
+
+        val expensesRecycleView = binding.rcExpenses
+        expensesRecycleView.layoutManager = LinearLayoutManager(context)
+        expensesRecycleView.adapter = ExpenseAdapter(expens)
+
+//        val textView: TextView = binding.textHome
+//        expenseViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

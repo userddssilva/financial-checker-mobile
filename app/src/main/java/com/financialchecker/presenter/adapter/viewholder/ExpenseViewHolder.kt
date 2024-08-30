@@ -22,16 +22,17 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.dashboard
+package com.financialchecker.presenter.adapter.viewholder
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.view.View
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.financialchecker.R
 
-class DashboardViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+class ExpenseViewHolder(itemView: View) : ViewHolder(itemView) {
+    var description: TextView = itemView.findViewById(R.id.tv_expense_description)
+    var date: TextView = itemView.findViewById(R.id.tv_expense_date)
+    var value: TextView = itemView.findViewById(R.id.tv_expense_value)
+    var category: TextView = itemView.findViewById(R.id.tv_expense_cate)
+    var isPaid: TextView = itemView.findViewById(R.id.tv_is_paid)
 }

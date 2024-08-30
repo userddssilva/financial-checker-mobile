@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.category
+package com.financialchecker.presenter.ui.category
 
 class CategoryViewModel {
 }

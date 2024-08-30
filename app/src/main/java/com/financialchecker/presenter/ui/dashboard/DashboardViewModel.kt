@@ -22,12 +22,16 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.model.data
+package com.financialchecker.presenter.ui.dashboard
 
-data class Expense(
-    val description: String,
-    val date: String,
-    val value: Double,
-    val category: ExpenseCategory,
-    val isPaid: Boolean
-)
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+
+class DashboardViewModel : ViewModel() {
+
+    private val _text = MutableLiveData<String>().apply {
+        value = "This is dashboard Fragment"
+    }
+    val text: LiveData<String> = _text
+}

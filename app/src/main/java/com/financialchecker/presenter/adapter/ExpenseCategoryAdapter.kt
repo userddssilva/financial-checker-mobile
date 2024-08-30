@@ -22,16 +22,29 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.expense
+package com.financialchecker.presenter.adapter
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.financialchecker.R
+import com.financialchecker.presenter.model.ExpenseCategoryUiModel
+import com.financialchecker.presenter.adapter.viewholder.ExpenseCategoryViewHolder
 
-class ExpenseViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+class ExpenseCategoryAdapter(private val expenseCategoryUiModelItems: List<ExpenseCategoryUiModel>) :
+    Adapter<ExpenseCategoryViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseCategoryViewHolder {
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+        val expenseCategoryView = inflater.inflate(R.layout.item_expense_category, parent, false)
+        return ExpenseCategoryViewHolder(expenseCategoryView)
     }
-    val text: LiveData<String> = _text
+
+    override fun getItemCount(): Int {
+        return expenseCategoryUiModelItems.size
+    }
+
+    override fun onBindViewHolder(holder: ExpenseCategoryViewHolder, position: Int) {
+        holder.category.text = expenseCategoryUiModelItems[position].name
+    }
 }

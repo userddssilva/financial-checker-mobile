@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.financialchecker
+package com.financialchecker.presenter
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,6 +31,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.financialchecker.R
 import com.financialchecker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

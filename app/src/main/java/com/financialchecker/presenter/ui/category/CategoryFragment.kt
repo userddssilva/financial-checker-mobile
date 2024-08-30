@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.category
+package com.financialchecker.presenter.ui.category
 
 import android.content.Intent
 import android.os.Bundle
@@ -33,8 +33,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.financialchecker.R
 import com.financialchecker.databinding.FragmentCategoryBinding
-import com.financialchecker.model.adapter.ExpenseCategoryAdapter
-import com.financialchecker.model.data.ExpenseCategory
+import com.financialchecker.presenter.adapter.ExpenseCategoryAdapter
+import com.financialchecker.presenter.model.ExpenseCategoryUiModel
 
 class CategoryFragment : Fragment() {
     private var _binding: FragmentCategoryBinding? = null
@@ -48,10 +48,10 @@ class CategoryFragment : Fragment() {
         val root: View = binding.root
 
         val stringsCategories = resources.getStringArray(R.array.expense_category)
-        val categories = arrayListOf<ExpenseCategory>()
+        val categories = arrayListOf<ExpenseCategoryUiModel>()
 
         stringsCategories.forEach { name ->
-            categories.add(ExpenseCategory(name, true))
+            categories.add(ExpenseCategoryUiModel(name, true))
         }
 
         val categoriesAdapter = ExpenseCategoryAdapter(categories)

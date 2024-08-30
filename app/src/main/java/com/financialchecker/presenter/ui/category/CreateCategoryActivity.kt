@@ -22,12 +22,10 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.ui.category
+package com.financialchecker.presenter.ui.category
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.financialchecker.R
 import com.financialchecker.databinding.ActivityCreateCategoryBinding
 
 class CreateCategoryActivity : AppCompatActivity() {

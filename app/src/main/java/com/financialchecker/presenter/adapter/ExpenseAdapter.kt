@@ -22,29 +22,37 @@
  * SOFTWARE.
  */
 
-package com.financialchecker.model.adapter
+package com.financialchecker.presenter.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.financialchecker.R
-import com.financialchecker.model.data.ExpenseCategory
-import com.financialchecker.ui.category.ExpenseCategoryViewHolder
+import com.financialchecker.presenter.model.ExpenseUiModel
+import com.financialchecker.presenter.adapter.viewholder.ExpenseViewHolder
 
-class ExpenseCategoryAdapter(private val expenseCategoryItems: List<ExpenseCategory>) :
-    Adapter<ExpenseCategoryViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseCategoryViewHolder {
+class ExpenseAdapter(private val expens: List<ExpenseUiModel>) : Adapter<ExpenseViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val expenseCategoryView = inflater.inflate(R.layout.item_expense_category, parent, false)
-        return ExpenseCategoryViewHolder(expenseCategoryView)
+        val expenseView = inflater.inflate(R.layout.item_expense, parent, false)
+        return ExpenseViewHolder(expenseView)
     }
 
     override fun getItemCount(): Int {
-        return expenseCategoryItems.size
+        return expens.size
     }
 
-    override fun onBindViewHolder(holder: ExpenseCategoryViewHolder, position: Int) {
-        holder.category.text = expenseCategoryItems[position].name
+    override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
+        val value = "R$ ${expens[position].value}".replace(".", ",")
+        val isPaid = if (expens[position].isPaid) "Paid" else "Unpaid"
+
+        holder.value.text = value
+        holder.isPaid.text = isPaid
+
+        holder.category.text = expens[position].category.name
+        holder.description.text = expens[position].description
+        holder.category.text = expens[position].description
+        holder.date.text = expens[position].date
     }
 }
