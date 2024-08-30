@@ -28,6 +28,7 @@ data class ExpenseUiModel(
     val description: String,
     val date: String,
     val value: Double,
-    val category: ExpenseCategoryUiModel,
-    val isPaid: Boolean
+    val category: String,
+    val isPaid: Boolean,
+    val isEssential: Boolean
 )

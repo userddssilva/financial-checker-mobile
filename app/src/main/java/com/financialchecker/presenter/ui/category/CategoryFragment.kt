@@ -34,7 +34,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.financialchecker.R
 import com.financialchecker.databinding.FragmentCategoryBinding
 import com.financialchecker.presenter.adapter.ExpenseCategoryAdapter
-import com.financialchecker.presenter.model.ExpenseCategoryUiModel
 
 class CategoryFragment : Fragment() {
     private var _binding: FragmentCategoryBinding? = null
@@ -48,10 +47,10 @@ class CategoryFragment : Fragment() {
         val root: View = binding.root
 
         val stringsCategories = resources.getStringArray(R.array.expense_category)
-        val categories = arrayListOf<ExpenseCategoryUiModel>()
+        val categories = arrayListOf<String>()
 
         stringsCategories.forEach { name ->
-            categories.add(ExpenseCategoryUiModel(name, true))
+            categories.add(name)
         }
 
         val categoriesAdapter = ExpenseCategoryAdapter(categories)

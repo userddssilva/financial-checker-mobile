@@ -28,10 +28,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.financialchecker.R
-import com.financialchecker.presenter.model.ExpenseCategoryUiModel
 import com.financialchecker.presenter.adapter.viewholder.ExpenseCategoryViewHolder
 
-class ExpenseCategoryAdapter(private val expenseCategoryUiModelItems: List<ExpenseCategoryUiModel>) :
+class ExpenseCategoryAdapter(private val expenseCategoryUiModelItems: List<String>) :
     Adapter<ExpenseCategoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseCategoryViewHolder {
         val context = parent.context
@@ -45,6 +44,6 @@ class ExpenseCategoryAdapter(private val expenseCategoryUiModelItems: List<Expen
     }
 
     override fun onBindViewHolder(holder: ExpenseCategoryViewHolder, position: Int) {
-        holder.category.text = expenseCategoryUiModelItems[position].name
+        holder.category.text = expenseCategoryUiModelItems[position]
     }
 }

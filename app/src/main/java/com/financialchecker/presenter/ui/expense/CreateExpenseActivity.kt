@@ -25,13 +25,20 @@
 package com.financialchecker.presenter.ui.expense
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import com.financialchecker.R
 import com.financialchecker.databinding.ActivityCreateExpenseBinding
+import com.financialchecker.presenter.model.OExpense
+import com.financialchecker.presenter.ui.category.CreateCategoryActivity
 
 class CreateExpenseActivity : AppCompatActivity() {
+
+    companion object{
+        private val TAG: String = CreateCategoryActivity::class.java.simpleName
+    }
 
     private lateinit var binding: ActivityCreateExpenseBinding
 
@@ -51,6 +58,17 @@ class CreateExpenseActivity : AppCompatActivity() {
         (binding.atvExpenseCategory as? AutoCompleteTextView)?.setAdapter(expenseCategoryItems)
 
         binding.btnAddExpense.setOnClickListener {
+            OExpense.let { obj ->
+                binding.let { bin ->
+                    obj.description = bin.tiDescription.text.toString()
+                    obj.date = bin.tiDate.text.toString()
+                    obj.value = bin.tiValue.text.toString()
+                    obj.category = bin.tiCategory.editText?.text.toString()
+                    obj.isPaid = bin.swtPaid.isActivated
+                    obj.isEssential = bin.swtIsEssential.isActivated
+                }
+            }
+            Log.d(TAG, OExpense.toString())
             onBackPressedDispatcher.onBackPressed()
         }
     }

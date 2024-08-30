@@ -50,7 +50,7 @@ class ExpenseAdapter(private val expens: List<ExpenseUiModel>) : Adapter<Expense
         holder.value.text = value
         holder.isPaid.text = isPaid
 
-        holder.category.text = expens[position].category.name
+        holder.category.text = expens[position].category
         holder.description.text = expens[position].description
         holder.category.text = expens[position].description
         holder.date.text = expens[position].date

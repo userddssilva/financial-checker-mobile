@@ -37,7 +37,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
-        tools:context=".presenter.ui.expense.CreateExpenseActivity">
+        tools:context=".presenter.ui.expense.CreateExpenseActivity"
+        tools:ignore="UselessParent">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -46,9 +47,10 @@
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description"
+                android:hint="@string/description"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,9 +61,10 @@
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Data"
+                android:hint="@string/date"
                 android:inputType="date" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,14 +75,15 @@
             android:layout_marginBottom="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Value"
+                android:hint="@string/value"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_expense_category"
+            android:id="@+id/ti_category"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +93,7 @@
                 android:id="@+id/atv_expense_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category"
+                android:hint="@string/category"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +103,16 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:layout_weight="1"
-            android:text="Paid"
+            android:text="@string/paid"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <Switch
+            android:id="@+id/swt_is_essential"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_weight="1"
+            android:text="@string/essential"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <com.google.android.material.button.MaterialButton
@@ -107,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:height="60dp"
-            android:text="Add" />
+            android:text="@string/add" />
 
     </LinearLayout>
 </LinearLayout>
